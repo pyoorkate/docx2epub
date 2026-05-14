@@ -62,13 +62,13 @@ def get_run_html(run):
     text = text.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
 
     if run.bold:
-        text = f'<div class="bold">{text}</div>'
+        text = f'<span class="bold">{text}</span>'
     if run.italic:
-        text = f'<div class="italic">{text}</div>'
+        text = f'<span class="italic">{text}</span>'
     if run.underline:
-        text = f'<div class="underline">{text}</div>'
+        text = f'<span class="underline">{text}</span>'
     if run.font.strike:
-        text = f'<div class="strikethrough">{text}</div>'
+        text = f'<span class="strikethrough">{text}</span>'
 
     return text
 
@@ -187,7 +187,7 @@ def convert_docx_to_epub(docx_path, output_path):
     book.add_item(copyright_page)
 
     # 9. Define Table of Contents (TOC)
-    book.toc = chapters
+    book.toc = chapters + [author_page, press_page, copyright_page]
 
     # 10. Define Spine (The actual reading order)
     spine_list = ['nav', cover_page, title_page] + chapters + [author_page, press_page, copyright_page]
