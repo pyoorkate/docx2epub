@@ -62,13 +62,13 @@ def get_run_html(run):
     text = text.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;')
 
     if run.bold:
-        text = f'<b>{text}</b>'
+        text = f'<div class="bold">{text}</div>'
     if run.italic:
-        text = f'<i>{text}</i>'
+        text = f'<div class="italic">{text}</div>'
     if run.underline:
-        text = f'<u>{text}</u>'
+        text = f'<div class="underline">{text}</div>'
     if run.font.strike:
-        text = f'<s>{text}</s>'
+        text = f'<div class="strikethrough">{text}</div>'
 
     return text
 
